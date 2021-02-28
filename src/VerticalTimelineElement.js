@@ -21,23 +21,20 @@ const VerticalTimelineElement = ({
   textClassName,
   intersectionObserverProps,
   visible,
-  outLineColor,
-}) => {
-  document.getElementsByClassName('app').style.setProperty('--outline-color', outLineColor);
-  return(
-    <InView {...intersectionObserverProps}>
-      {({ inView, ref }) => (
-        <div
-          ref={ref}
-          id={id}
-          className={classNames(className, 'vertical-timeline-element', {
-            'vertical-timeline-element--left': position === 'left',
-            'vertical-timeline-element--right': position === 'right',
-            'vertical-timeline-element--no-children': children === '',
-          })}
-          style={style}
-        >
-          <React.Fragment>
+}) => (
+  <InView {...intersectionObserverProps}>
+    {({ inView, ref }) => (
+      <div
+        ref={ref}
+        id={id}
+        className={classNames(className, 'vertical-timeline-element', {
+          'vertical-timeline-element--left': position === 'left',
+          'vertical-timeline-element--right': position === 'right',
+          'vertical-timeline-element--no-children': children === '',
+        })}
+        style={style}
+      >
+        <React.Fragment>
           <span // eslint-disable-line jsx-a11y/no-static-element-interactions
             style={iconStyle}
             onClick={iconOnClick}
@@ -52,38 +49,37 @@ const VerticalTimelineElement = ({
           >
             {icon}
           </span>
+          <div
+            style={contentStyle}
+            onClick={onTimelineElementClick}
+            className={classNames(
+              textClassName,
+              'vertical-timeline-element-content',
+              {
+                'bounce-in': inView || visible,
+                'is-hidden': !(inView || visible),
+              }
+            )}
+          >
             <div
-              style={contentStyle}
-              onClick={onTimelineElementClick}
+              style={contentArrowStyle}
+              className="vertical-timeline-element-content-arrow"
+            />
+            {children}
+            <span
               className={classNames(
-                textClassName,
-                'vertical-timeline-element-content',
-                {
-                  'bounce-in': inView || visible,
-                  'is-hidden': !(inView || visible),
-                }
+                dateClassName,
+                'vertical-timeline-element-date'
               )}
             >
-              <div
-                style={contentArrowStyle}
-                className="vertical-timeline-element-content-arrow"
-              />
-              {children}
-              <span
-                className={classNames(
-                  dateClassName,
-                  'vertical-timeline-element-date'
-                )}
-              >
               {date}
             </span>
-            </div>
-          </React.Fragment>
-        </div>
-      )}
-    </InView>
-  );
-}
+          </div>
+        </React.Fragment>
+      </div>
+    )}
+  </InView>
+);
 
 VerticalTimelineElement.propTypes = {
   children: PropTypes.oneOfType([
@@ -105,7 +101,6 @@ VerticalTimelineElement.propTypes = {
   style: PropTypes.shape({}),
   textClassName: PropTypes.string,
   visible: PropTypes.bool,
-  outlineColor: PropTypes.string,
   intersectionObserverProps: PropTypes.shape({
     root: PropTypes.object,
     rootMargin: PropTypes.string,
@@ -128,7 +123,6 @@ VerticalTimelineElement.defaultProps = {
   style: null,
   date: '',
   dateClassName: '',
-  outlineColor: "white",
   position: '',
   textClassName: '',
   visible: false,

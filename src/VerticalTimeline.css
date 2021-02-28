@@ -23,8 +23,8 @@
   top: 0;
   left: 18px;
   height: 100%;
-  width: var(--line-width);
-  background: var(--line-color);
+  width: 4px;
+  background: white;
 }
 
 .vertical-timeline.vertical-timeline--one-column-right::before {
