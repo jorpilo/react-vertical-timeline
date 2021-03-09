@@ -103,6 +103,7 @@ VerticalTimelineElement.propTypes = {
   style: PropTypes.shape({}),
   textClassName: PropTypes.string,
   visible: PropTypes.bool,
+  outlineColor: PropTypes.string,
   intersectionObserverProps: PropTypes.shape({
     root: PropTypes.object,
     rootMargin: PropTypes.string,
@@ -125,6 +126,7 @@ VerticalTimelineElement.defaultProps = {
   style: null,
   date: '',
   dateClassName: '',
+  outlineColor: "white",
   position: '',
   textClassName: '',
   visible: false,
