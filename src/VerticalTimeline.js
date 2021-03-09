@@ -34,8 +34,6 @@ VerticalTimeline.propTypes = {
     '2-columns',
     '1-column-right',
   ]),
-  lineColor: PropTypes.string,
-  lineWidth: PropTypes.string,
   lineHeight: PropTypes.string
 };
 
