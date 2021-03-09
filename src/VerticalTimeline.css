@@ -21,7 +21,6 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 18px;
   height: 100%;
   width: var(--line-width);
   background: var(--line-color);

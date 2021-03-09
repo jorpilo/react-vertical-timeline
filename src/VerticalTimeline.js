@@ -2,16 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const VerticalTimeline = ({
-                            animate,
-                            className,
-                            layout,
-                            lineColor,
-                            lineWidth,
-                            children,
-                          }) => {
-  document.documentElement.style.setProperty('--line-color', lineColor);
-  document.documentElement.style.setProperty('--line-width', lineWidth);
+const VerticalTimeline = ({ animate, className, layout, children, lineColor, lineWidth }) => {
   return (
     <div
       className={classNames(className, 'vertical-timeline', {
@@ -21,11 +12,12 @@ const VerticalTimeline = ({
           layout === '1-column' || layout === '1-column-left',
         'vertical-timeline--one-column-right': layout === '1-column-right',
       })}
+      style={{"--line-color": lineColor, "--line-width": lineWidth}}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 VerticalTimeline.propTypes = {
   children: PropTypes.oneOfType([
@@ -34,6 +26,8 @@ VerticalTimeline.propTypes = {
   ]).isRequired,
   className: PropTypes.string,
   animate: PropTypes.bool,
+  lineColor: PropTypes.string,
+  lineWidth: PropTypes.string,
   layout: PropTypes.oneOf([
     '1-column-left',
     '1-column',
@@ -49,8 +43,8 @@ VerticalTimeline.defaultProps = {
   animate: true,
   className: '',
   layout: '2-columns',
-  lineColor: '#FFF',
-  lineWidth: '4px',
+  lineColor: "white",
+  lineWidth: "4px"
 };
 
 export default VerticalTimeline;

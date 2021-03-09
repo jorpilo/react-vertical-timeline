@@ -21,10 +21,8 @@ const VerticalTimelineElement = ({
   textClassName,
   intersectionObserverProps,
   visible,
-  outLineColor,
 }) => {
-  document.getElementsByClassName('app').style.setProperty('--outline-color', outLineColor);
-  return(
+  return (
     <InView {...intersectionObserverProps}>
       {({ inView, ref }) => (
         <div
