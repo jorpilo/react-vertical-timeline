@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const VerticalTimeline = ({ animate, className, layout, children, lineColor, lineWidth }) => {
-  document.getElementById("vertical-timeline").style.setProperty('--line-color', lineColor);
-  document.getElementById("vertical-timeline").style.setProperty('--line-width', lineWidth);
   return (
     <div
       className={classNames(className, 'vertical-timeline', {
@@ -14,6 +12,7 @@ const VerticalTimeline = ({ animate, className, layout, children, lineColor, lin
           layout === '1-column' || layout === '1-column-left',
         'vertical-timeline--one-column-right': layout === '1-column-right',
       })}
+      style={{"--line-color": lineColor, "--line-width": lineWidth}}
     >
       {children}
     </div>
